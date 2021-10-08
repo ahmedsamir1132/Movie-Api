@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS EXAM</title>
+    <link rel="shortcut icon" type="image/x-icon" href="imgs/download.png" />
+    <link rel="stylesheet" href="CSS/all.min.css">
+    <link rel="stylesheet" href="CSS/bootstrap.min.css">
+    <link rel="stylesheet" href="CSS/main.css">
+</head>
+
+<body>
+
+    <!-- Navbar -->
+
+    <nav id="side-navbar" class="position-fixed text-center d-flex flex-column justify-content-between">
+        <div class="nav-logo">
+            <img src="imgs/logo.png" alt="navbar-logo">
+        </div>
+
+        <div class="nav-open-logo">
+            <i class="fas fa-align-justify"></i>
+        </div>
+
+        <div class="nav-global-icons d-flex flex-column">
+            <i class="fas fa-globe"></i>
+            <i class="fas fa-share-alt"></i>
+        </div>
+    </nav>
+
+    <nav id="side-nav-content" class="position-fixed d-flex flex-column justify-content-between">
+        <ul>
+            <li class="item-1">Now playing</li>
+            <li class="item-2">Popular</li>
+            <li class="item-3">Top Rated</li>
+            <li class="item-4">Trending</li>
+            <li class="item-5">Upcoming</li>
+            <li class="item-6">Contact Us</li>
+        </ul>
+
+        <div class="nav-social-icons">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fas fa-globe"></i></a>
+            <p>Copyright Â© 2019 All Rights Reserved.</p>
+        </div>
+    </nav>
+
+    <!-- End of Navbar -->
+
+    <!-- Home Section -->
+
+    <div class="container pt-5">
+        <div class="container" style="width: 80%;">
+            <div class="row mt-3">
+                <div class="col-md-6">
+                    <div>
+                        <!-- searches in all movies -->
+                        <input id="w-search" type="text" class="mb-5 ms-4 form-control"
+                            placeholder="Get movies by word">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div>
+                        <!-- searches in the 20 movie in home page -->
+                        <input id="search" type="text" class="mb-5 ms-4 form-control" placeholder="Search">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container text-center my-1 py-2">
+            <div id="movies" class="row">
+                <!-- The dragon fury movie poster dimensions is different from the api itself -->
+            </div>
+        </div>
+    </div>
+
+    <!-- End of home section -->
+
+    <!-- form section -->
+
+    <div id="form" class="container w-75 mx-auto my-5 mxM">
+        <h2>Contact Us...</h2>
+        <div class="row">
+            <div class="col-md-6 px-3 mb-3">
+                <input id="name" type="text" class="form-control" placeholder="Enter Your Name">
+
+                <div id="nameAlert" class="alert alert-danger visually-hidden" role="alert">
+                    Your Name is not valid
+                </div>
+            </div>
+
+            <div class="col-md-6 px-3 mb-3">
+                <input id="email" type="text" class="form-control" placeholder="Enter Email">
+
+                <div id="emailAlert" class="alert alert-danger visually-hidden" role="alert">
+                    Entre valid email
+                </div>
+            </div>
+
+            <div class="col-md-6 px-3 mb-3">
+                <input id="phone" type="number" class="form-control" placeholder="Enter Phone">
+
+                <div id="phoneAlert" class="alert alert-danger visually-hidden" role="alert">
+                    Entre valid egyptian phone
+                </div>
+            </div>
+
+            <div class="col-md-6 px-3 mb-3">
+                <input id="age" type="number" class="form-control" placeholder="Enter Age">
+
+                <div id="ageAlert" class="alert alert-danger visually-hidden" role="alert">
+                    Entre valid Age *minimum age of 1, maximum age of 110*
+                </div>
+            </div>
+
+            <div class="col-md-6 px-3 mb-3">
+                <input id="password" type="password" class="form-control" placeholder="Enter Password">
+
+                <div id="passwordAlert" class="alert alert-danger visually-hidden" role="alert">
+                    Entre valid password *Minimum eight characters, at least one letter and one number:*
+                </div>
+            </div>
+
+            <div class="col-md-6 px-3 mb-3">
+                <input id="repassword" type="password" class="form-control" placeholder="Repassword">
+
+                <div id="repasswordAlert" class="alert alert-danger visually-hidden" role="alert">
+                    Entre valid Repassword
+                </div>
+            </div>
+
+        </div>
+        <button id="form-submit" class="btn btn-outline-danger mt-2 disabled">Submit</button>
+    </div>
+
+
+    <script src="JS/jquery-3.6.0.min.js"></script>
+    <script src="JS/bootstrap.bundle.js"></script>
+    <script src="JS/main.js"></script>
+</body>
+
+</html>
