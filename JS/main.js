@@ -72,31 +72,59 @@ showMovies();
 
 /* Search */
 
-$("#search").on("keyup", function () {
-    let value = $(this).val().toLowerCase();
-    $("#movies").empty();
-    for (let i = 0; i < movies.results.length; i++) {
-        if (movies.results[i].original_title.toLowerCase().includes(value)) {
-            $("#movies").append(`<div class="col-md-6 col-lg-4 my-3 mxM pxR">
-        <div class="movie position-relative">
-        <img src="${imgPrefix + movies.results[i].poster_path}" class="img-fluid rounded" />
-            <div class="movie-info rounded d-flex flex-column align-items-center justify-content-center">
-                <h2>${movies.results[i].original_title}</h2>
-                <p>${movies.results[i].overview}</p>
-                <p>Rate: ${movies.results[i].vote_average}</p>
-                <p>${movies.results[i].release_date}</p>
-            </div>
-            </div>
-    </div>`)
-        }
+async function search() {
+    if ($("#w-search").val() == "") {
+        $("#search").on("keyup", function () {
+            let value = $(this).val().toLowerCase();
+            $("#movies").empty();
+            for (let i = 0; i < movies.results.length; i++) {
+                if (movies.results[i].original_title.toLowerCase().includes(value)) {
+                    $("#movies").append(`<div class="col-md-6 col-lg-4 my-3 mxM pxR">
+                <div class="movie position-relative">
+                <img src="${imgPrefix + movies.results[i].poster_path}" class="img-fluid rounded" />
+                    <div class="movie-info rounded d-flex flex-column align-items-center justify-content-center">
+                        <h2>${movies.results[i].original_title}</h2>
+                        <p>${movies.results[i].overview}</p>
+                        <p>Rate: ${movies.results[i].vote_average}</p>
+                        <p>${movies.results[i].release_date}</p>
+                    </div>
+                    </div>
+            </div>`)
+                }
+            }
+        })
     }
-})
+    else {
+        $("#search").on("keyup", function () {
+            let value = $(this).val().toLowerCase();
+            $("#movies").empty();
+            for (let i = 0; i < search.results.length; i++) {
+                if (search.results[i].original_title.toLowerCase().includes(value)) {
+                    $("#movies").append(`<div class="col-md-6 col-lg-4 my-3 mxM pxR">
+                <div class="movie position-relative">
+                <img src="${imgPrefix + search.results[i].poster_path}" class="img-fluid rounded" />
+                    <div class="movie-info rounded d-flex flex-column align-items-center justify-content-center">
+                        <h2>${search.results[i].original_title}</h2>
+                        <p>${search.results[i].overview}</p>
+                        <p>Rate: ${search.results[i].vote_average}</p>
+                        <p>${search.results[i].release_date}</p>
+                    </div>
+                    </div>
+            </div>`)
+                }
+            }
+        })
+    }
+}
+
+document.getElementById("search").addEventListener("keyup", search);
+
 
 /* End of search */
 
 /* Search with word */
 
-let search;
+var search;
 
 async function searchApi(movieName) {
     let response = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=c5e6ab97d7382f0121791b9b7b844898&query=${movieName}`);
