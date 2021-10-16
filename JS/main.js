@@ -39,8 +39,13 @@ $(".nav-open-logo").click(function () {
 let movies;
 let imgPrefix = `https://image.tmdb.org/t/p/original/`;
 
-async function getApi() {
-    let response = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=c5e6ab97d7382f0121791b9b7b844898&language=en-US&page=1`);
+async function getApi(category) {
+    let response = await fetch(`https://api.themoviedb.org/3/movie/${category}?api_key=c5e6ab97d7382f0121791b9b7b844898&language=en-US&page=1`);
+    movies = await response.json();
+}
+
+async function getTrend() {
+    let response = await fetch(`https://api.themoviedb.org/3/trending/movie/week?api_key=c5e6ab97d7382f0121791b9b7b844898`);
     movies = await response.json();
 }
 
@@ -60,13 +65,40 @@ function displayMovies() {
     }
 }
 
-
-async function showMovies() {
-    await getApi();
+let category = `now_playing`;
+async function showMovies(category) {
+    $("#movies").empty();
+    await getApi(category);
     displayMovies();
 }
 
-showMovies();
+async function showTrendMovies() {
+    $("#movies").empty();
+    await getTrend();
+    displayMovies();
+}
+
+showMovies(category);
+
+document.getElementById("item-1").addEventListener("click",function () {
+    showMovies(`now_playing`);
+})
+
+document.getElementById("item-2").addEventListener("click",function () {
+    showMovies(`popular`);
+})
+
+document.getElementById("item-3").addEventListener("click",function () {
+    showMovies(`top_rated`);
+})
+
+document.getElementById("item-4").addEventListener("click",function () {
+ showTrendMovies();
+})
+
+document.getElementById("item-5").addEventListener("click",function () {
+    showMovies(`upcoming`);
+})
 
 /* End of Home */
 
@@ -135,7 +167,7 @@ async function searchApi(movieName) {
 async function getAllMovies() {
     if ($("#w-search").val() == "") {
         $("#movies").empty();
-        showMovies();
+        showMovies(category);
     }
     else {
         let value = $("#w-search").val().toLowerCase();

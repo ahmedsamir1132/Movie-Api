@@ -16,6 +16,7 @@ li {
 
 a {
     text-decoration: none;
+    color: #f8f6f6 !important;
 }
 
 input[type=number]::-webkit-outer-spin-button,
